@@ -333,7 +333,9 @@ def create_fornitore():
 # ═══════════════════════════════════════
 @app.route('/')
 def index():
-    return send_from_directory('static', 'index.html')
+    if os.path.exists('static/index.html'):
+        return send_from_directory('static', 'index.html')
+    return send_from_directory('.', 'index.html')
 
 if __name__ == '__main__':
     init_db()
